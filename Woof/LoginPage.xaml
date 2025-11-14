@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Woof.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#F4F6FF"
+    Title="">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="25" VerticalOptions="Center">
+
+            <!-- ============================= -->
+            <!-- LOGO / ICONO SUPERIOR         -->
+            <!-- ============================= -->
+            <Image Source="dog_logo.png"
+                   WidthRequest="120"
+                   HeightRequest="120"
+                   HorizontalOptions="Center"
+                   Margin="0,30,0,10"/>
+
+            <Label Text="Woof"
+                   HorizontalOptions="Center"
+                   FontSize="36"
+                   FontAttributes="Bold"
+                   TextColor="#333"/>
+
+            <!-- TARJETA DE LOGIN -->
+            <Frame BackgroundColor="White"
+                   Padding="25"
+                   CornerRadius="20"
+                   HasShadow="True">
+
+                <VerticalStackLayout Spacing="15">
+
+                    <Entry x:Name="UsernameEntry"
+                           Placeholder="Usuario"
+                           BackgroundColor="#F3F4F6"
+                           HeightRequest="48"
+                          />
+
+                    <Entry x:Name="PasswordEntry"
+                           Placeholder="Contraseña"
+                           IsPassword="True"
+                           BackgroundColor="#F3F4F6"
+                           HeightRequest="48"
+                           />
+
+                    <Button Text="Iniciar sesión"
+                            HeightRequest="50"
+                            BackgroundColor="#5A38FD"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            Clicked="OnLoginClicked"/>
+
+                    <Label x:Name="ErrorLabel"
+                           TextColor="#D32F2F"
+                           FontAttributes="Bold"
+                           FontSize="14"
+                           HorizontalOptions="Center"
+                           IsVisible="False"/>
+                </VerticalStackLayout>
+
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

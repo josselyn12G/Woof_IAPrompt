@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Woof.MascotasPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#F4F6FF"
+    Title="">
+
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="Auto,*" Padding="15">
+
+            <!-- =========== BOTÓN REGRESAR =========== -->
+            <Grid>
+                <Button Text="⟵"
+                        Clicked="OnRegresarClicked"
+                        BackgroundColor="White"
+                        TextColor="#4A4A4A"
+                        WidthRequest="45"
+                        HeightRequest="45"
+                        CornerRadius="22"
+                        BorderWidth="1"
+                        BorderColor="#DDDDDD"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"/>
+            </Grid>
+
+
+            <!-- ========= CONTENIDO PRINCIPAL ========= -->
+            <ScrollView Grid.Row="1">
+                <VerticalStackLayout Spacing="25">
+
+                    <!-- ========= FORMULARIO REGISTRO ========= -->
+                    <Frame CornerRadius="20"
+                           Padding="20"
+                           BackgroundColor="White"
+                           HasShadow="True">
+
+                        <VerticalStackLayout Spacing="15">
+
+                            <Label Text="Agregar Mascota"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="#333" />
+
+
+                            <!-- Nombre -->
+                            <Label Text="Nombre" FontAttributes="Bold" TextColor="#555"/>
+                            <Frame BackgroundColor="#F3F4F6"
+                                   CornerRadius="12" Padding="10">
+                                <Entry x:Name="MascotaNombreEntry"
+                                       Placeholder="Ej: Firulais"
+                                       BackgroundColor="Transparent"/>
+                            </Frame>
+
+                            <!-- Especie -->
+                            <Label Text="Especie" FontAttributes="Bold" TextColor="#555"/>
+                            <Frame BackgroundColor="#F3F4F6"
+                                   CornerRadius="12" Padding="10">
+                                <Entry x:Name="MascotaEspecieEntry"
+                                       Placeholder="Perro, Gato..."
+                                       BackgroundColor="Transparent"/>
+                            </Frame>
+
+                            <!-- Raza -->
+                            <Label Text="Raza" FontAttributes="Bold" TextColor="#555"/>
+                            <Frame BackgroundColor="#F3F4F6"
+                                   CornerRadius="12" Padding="10">
+                                <Entry x:Name="MascotaRazaEntry"
+                                       Placeholder="Labrador, Persa..."
+                                       BackgroundColor="Transparent"/>
+                            </Frame>
+
+
+                            <!-- Botón agregar -->
+                            <Button Text="Agregar Mascota"
+                                    HeightRequest="50"
+                                    CornerRadius="12"
+                                    BackgroundColor="#5A38FD"
+                                    TextColor="White"
+                                    FontAttributes="Bold"
+                                    Clicked="OnAgregarMascotaClicked"/>
+                        </VerticalStackLayout>
+
+                    </Frame>
+
+
+
+
+                    <!-- ========= LISTA DE MASCOTAS ========= -->
+                    <Label Text="Mascotas registradas"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           TextColor="#333"/>
+
+
+                    <ListView x:Name="MascotasListView"
+                              ItemSelected="OnMascotaSelected"
+                              SeparatorVisibility="None"
+                              BackgroundColor="Transparent"
+                              HasUnevenRows="True">
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+
+                                    <!-- TARJETA DE MASCOTA -->
+                                    <Frame CornerRadius="18"
+                                           Margin="0,10"
+                                           BackgroundColor="White"
+                                           HasShadow="True">
+
+                                        <Grid ColumnDefinitions="Auto,*"
+                                              Padding="15">
+
+                                            <!-- ICONO (primeras 2 letras) -->
+                                            <Frame WidthRequest="60"
+                                                   HeightRequest="60"
+                                                   CornerRadius="30"
+                                                   Padding="5"
+                                                   VerticalOptions="Start">
+                                                <Frame.Background>
+                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                        <GradientStop Color="#FF9F1C" Offset="0.1"/>
+                                                        <GradientStop Color="#FF6F00" Offset="1.0"/>
+                                                    </LinearGradientBrush>
+                                                </Frame.Background>
+
+                                                <Label Text="{Binding Nombre}"
+                                                       FontSize="11"
+                                                       TextColor="White"
+                                                       FontAttributes="Bold"
+                                                       HorizontalTextAlignment="Center"
+                                                       VerticalTextAlignment="Center"
+                                                       LineBreakMode="WordWrap"/>
+                                            </Frame>
+
+
+                                            <!-- DATOS -->
+                                            <VerticalStackLayout 
+                                                Grid.Column="1"
+                                                Spacing="6"
+                                                VerticalOptions="Center">
+
+                                                <Label Text="{Binding Nombre}"
+                                                       FontSize="18"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#222"/>
+
+                                                <HorizontalStackLayout Spacing="8">
+                                                    <Label Text="🐾" FontSize="16"/>
+                                                    <Label Text="{Binding Especie}"
+                                                           TextColor="#555"
+                                                           FontSize="14"/>
+                                                </HorizontalStackLayout>
+
+                                                <HorizontalStackLayout Spacing="8">
+                                                    <Label Text="📌" FontSize="16"/>
+                                                    <Label Text="{Binding Raza}"
+                                                           TextColor="#555"
+                                                           FontSize="14"/>
+                                                </HorizontalStackLayout>
+
+                                            </VerticalStackLayout>
+
+                                        </Grid>
+
+                                    </Frame>
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+
+
+
+                    <!-- BOTÓN ELIMINAR (ABAJO IGUAL QUE ANTES) -->
+                    <Button Text="Eliminar Mascota Seleccionada"
+                            HeightRequest="50"
+                            CornerRadius="12"
+                            BackgroundColor="#D32F2F"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            Clicked="OnEliminarMascotaClicked"/>
+
+                </VerticalStackLayout>
+            </ScrollView>
+
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

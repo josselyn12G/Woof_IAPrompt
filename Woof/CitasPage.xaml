@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Woof.CitasPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#F4F6FF"
+    Title="">
+
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="Auto,*" Padding="15">
+
+            <!-- =========== BOTÓN REGRESAR =========== -->
+            <Grid>
+                <Button Text="⟵"
+                        Clicked="OnRegresarClicked"
+                        BackgroundColor="White"
+                        TextColor="#4A4A4A"
+                        WidthRequest="45"
+                        HeightRequest="45"
+                        CornerRadius="22"
+                        BorderWidth="1"
+                        BorderColor="#DDDDDD"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"/>
+            </Grid>
+
+
+            <!-- =========== CONTENIDO PRINCIPAL =========== -->
+            <ScrollView Grid.Row="1">
+                <VerticalStackLayout Spacing="25">
+
+                    <!-- ========= TARJETA CREAR CITA ========= -->
+                    <Frame CornerRadius="20"
+                           Padding="20"
+                           BackgroundColor="White"
+                           HasShadow="True">
+
+                        <VerticalStackLayout Spacing="15">
+
+                            <Label Text="Crear Nueva Cita"
+                                   FontSize="22"
+                                   FontAttributes="Bold"
+                                   TextColor="#333" />
+
+                            <!-- Nombre mascota -->
+                            <Label Text="Nombre de la Mascota"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#555"/>
+                            <Frame BackgroundColor="#F3F4F6"
+                                   CornerRadius="12"
+                                   Padding="10"
+                                   HasShadow="False">
+                                <Entry x:Name="MascotaNombreEntry"
+                                       Placeholder="Ej: Firulais"
+                                       BackgroundColor="Transparent"/>
+                            </Frame>
+
+                            <!-- Fecha -->
+                            <Label Text="Fecha"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#555"/>
+                            <Frame BackgroundColor="#F3F4F6"
+                                   CornerRadius="12"
+                                   Padding="5"
+                                   HasShadow="False">
+                                <DatePicker x:Name="FechaPicker"
+                                            Format="yyyy-MM-dd"
+                                            BackgroundColor="Transparent"
+                                            HeightRequest="45"/>
+                            </Frame>
+
+                            <!-- Motivo -->
+                            <Label Text="Motivo"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#555"/>
+                            <Frame BackgroundColor="#F3F4F6"
+                                   CornerRadius="12"
+                                   Padding="10"
+                                   HasShadow="False">
+                                <Entry x:Name="MotivoEntry"
+                                       Placeholder="Motivo de la cita"
+                                       BackgroundColor="Transparent"/>
+                            </Frame>
+
+                            <!-- Botón Agregar -->
+                            <Button Text="Agregar Cita"
+                                    HeightRequest="50"
+                                    CornerRadius="12"
+                                    BackgroundColor="#5A38FD"
+                                    TextColor="White"
+                                    FontAttributes="Bold"
+                                    Clicked="OnAgregarCitaClicked"/>
+                        </VerticalStackLayout>
+
+                    </Frame>
+
+
+                    <!-- ========= LISTADO DE CITAS ========= -->
+                    <Label Text="Citas Registradas"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           Margin="0,10,0,0"
+                           TextColor="#333" />
+
+                    <VerticalStackLayout x:Name="ListaCitasContainer"
+                                         Spacing="12"
+                                         Padding="0,0,0,20">
+
+                        <ListView x:Name="CitasListView"
+                                  ItemSelected="OnCitaSelected"
+                                  HasUnevenRows="True"
+                                  BackgroundColor="Transparent"
+                                  SeparatorVisibility="None">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame CornerRadius="15"
+                                               Padding="15"
+                                               Margin="10,5"
+                                               BackgroundColor="White"
+                                               HasShadow="True">
+
+                                            <HorizontalStackLayout Spacing="15">
+
+                                                <!-- Icono decorativo -->
+                                                <Frame WidthRequest="50"
+                                                       HeightRequest="50"
+                                                       CornerRadius="25"
+                                                       BackgroundColor="#E2ECFF"
+                                                       HorizontalOptions="Start"
+                                                       VerticalOptions="Center">
+
+                                                    <Label Text="📅"
+                                                           FontSize="26"
+                                                           HorizontalOptions="Center"
+                                                           VerticalOptions="Center"/>
+                                                </Frame>
+
+                                                <!-- Texto -->
+                                                <VerticalStackLayout>
+                                                    <Label Text="{Binding MascotaNombre}"
+                                                           FontAttributes="Bold"
+                                                           FontSize="16"
+                                                           TextColor="#333"/>
+
+                                                    <Label Text="{Binding Fecha}"
+                                                           FontSize="14"
+                                                           TextColor="#777"/>
+
+                                                    <Label Text="{Binding Motivo}"
+                                                           FontSize="12"
+                                                           TextColor="#999"/>
+                                                </VerticalStackLayout>
+
+                                            </HorizontalStackLayout>
+
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+
+                        </ListView>
+
+                    </VerticalStackLayout>
+
+
+                    <!-- Botón eliminar -->
+                    <Button Text="Eliminar Cita Seleccionada"
+                            HeightRequest="50"
+                            CornerRadius="12"
+                            BackgroundColor="#D32F2F"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            Clicked="OnEliminarCitaClicked"/>
+
+                </VerticalStackLayout>
+            </ScrollView>
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

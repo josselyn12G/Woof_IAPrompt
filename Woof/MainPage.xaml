@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Woof.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundColor="#F4F6FF">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="25">
+
+            <!-- ============================= -->
+            <!-- SALUDO                        -->
+            <!-- ============================= -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="20"
+                   Padding="20"
+                   HasShadow="True">
+
+                <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                    <Label x:Name="SaludoLabel"
+                           FontAttributes="Bold"
+                           FontSize="24"
+                           TextColor="#333" />
+
+                    <Label Text="Selecciona un módulo"
+                           FontSize="14"
+                           TextColor="#666"/>
+                </VerticalStackLayout>
+            </Frame>
+
+
+            <!-- ============================= -->
+            <!-- GRID DE MÓDULOS              -->
+            <!-- ============================= -->
+
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="20" RowSpacing="20">
+
+                <!-- ********** CITAS ********** -->
+                <Frame Grid.Row="0" Grid.Column="0"
+                       BackgroundColor="White"
+                       Padding="15"
+                       CornerRadius="20"
+                       HasShadow="True">
+
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="8">
+                        <Frame WidthRequest="60"
+                               HeightRequest="60"
+                               BackgroundColor="#E2ECFF"
+                               CornerRadius="30"
+                               HorizontalOptions="Center">
+                            <Label Text="📅"
+                                   FontSize="28"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Frame>
+
+                        <Label Text="Citas"
+                               FontAttributes="Bold"
+                               TextColor="#222"
+                               FontSize="16"
+                               HorizontalOptions="Center" />
+
+                        <Label Text="Gestionar citas"
+                               FontSize="13"
+                               TextColor="#777"
+                               HorizontalOptions="Center"/>
+
+                        <Button Text="Abrir"
+                                Clicked="OnCitasClicked"
+                                CornerRadius="12"
+                                HeightRequest="40"
+                                BackgroundColor="#5A38FD"
+                                TextColor="White" />
+                    </VerticalStackLayout>
+
+                </Frame>
+
+
+                <!-- ********** TIENDA ********** -->
+                <Frame Grid.Row="0" Grid.Column="1"
+                       BackgroundColor="White"
+                       Padding="15"
+                       CornerRadius="20"
+                       HasShadow="True">
+
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="8">
+                        <Frame WidthRequest="60"
+                               HeightRequest="60"
+                               BackgroundColor="#DFFFEF"
+                               CornerRadius="30"
+                               HorizontalOptions="Center">
+                            <Label Text="🛍"
+                                   FontSize="28"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Frame>
+
+                        <Label Text="Tienda"
+                               FontAttributes="Bold"
+                               TextColor="#222"
+                               FontSize="16"
+                               HorizontalOptions="Center"/>
+
+                        <Label Text="Productos y ventas"
+                               FontSize="13"
+                               TextColor="#777"
+                               HorizontalOptions="Center"/>
+
+                        <Button Text="Abrir"
+                                Clicked="OnTiendaClicked"
+                                CornerRadius="12"
+                                HeightRequest="40"
+                                BackgroundColor="#34C759"
+                                TextColor="White" />
+                    </VerticalStackLayout>
+
+                </Frame>
+
+
+                <!-- ********** VETERINARIOS ********** -->
+                <Frame Grid.Row="1" Grid.Column="0"
+                       BackgroundColor="White"
+                       Padding="15"
+                       CornerRadius="20"
+                       HasShadow="True">
+
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="8">
+                        <Frame WidthRequest="60"
+                               HeightRequest="60"
+                               BackgroundColor="#F0E3FF"
+                               CornerRadius="30"
+                               HorizontalOptions="Center">
+                            <Label Text="🩺"
+                                   FontSize="28"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Frame>
+
+                        <Label Text="Veterinarios"
+                               FontAttributes="Bold"
+                               TextColor="#222"
+                               FontSize="16"
+                               HorizontalOptions="Center"/>
+
+                        <Label Text="Personal médico"
+                               FontSize="13"
+                               TextColor="#777"
+                               HorizontalOptions="Center"/>
+
+                        <Button Text="Abrir"
+                                Clicked="OnVeterinariosClicked"
+                                CornerRadius="12"
+                                HeightRequest="40"
+                                BackgroundColor="#8B5CF6"
+                                TextColor="White" />
+                    </VerticalStackLayout>
+
+                </Frame>
+
+
+                <!-- ********** MASCOTAS ********** -->
+                <Frame Grid.Row="1" Grid.Column="1"
+                       BackgroundColor="White"
+                       Padding="15"
+                       CornerRadius="20"
+                       HasShadow="True">
+
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="8">
+                        <Frame WidthRequest="60"
+                               HeightRequest="60"
+                               BackgroundColor="#FFE9D6"
+                               CornerRadius="30"
+                               HorizontalOptions="Center">
+                            <Label Text="🐾"
+                                   FontSize="28"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Frame>
+
+                        <Label Text="Mascotas"
+                               FontAttributes="Bold"
+                               TextColor="#222"
+                               FontSize="16"
+                               HorizontalOptions="Center"/>
+
+                        <Label Text="Pacientes"
+                               FontSize="13"
+                               TextColor="#777"
+                               HorizontalOptions="Center"/>
+
+                        <Button Text="Abrir"
+                                Clicked="OnMascotasClicked"
+                                CornerRadius="12"
+                                HeightRequest="40"
+                                BackgroundColor="#FF8A34"
+                                TextColor="White" />
+                    </VerticalStackLayout>
+
+                </Frame>
+
+            </Grid>
+
+
+
+            <!-- ============================= -->
+            <!-- BOTÓN CERRAR SESIÓN          -->
+            <!-- ============================= -->
+
+            <Frame BackgroundColor="White"
+                   CornerRadius="20"
+                   Padding="10"
+                   HasShadow="True"
+                   Margin="0,20,0,0">
+
+                <Button Text="↩  Cerrar Sesión"
+                        Clicked="OnCerrarSesionClicked"
+                        BackgroundColor="Transparent"
+                        TextColor="#444"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"/>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
